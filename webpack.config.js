@@ -1,7 +1,7 @@
 module.exports = {
-  entry: './lib/main.jsx',
+  entry: './lib/content_load_main.jsx',
   output: {
-    path: '/Users/runtao/Desktop/fohr/lib/',
+    path: '/Users/runtao/Desktop/L2-challenge/lib/',
     filename: 'bundle.js',
   },
   module: {
@@ -19,5 +19,5 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx']
-  }
+  },
 };
