@@ -8,10 +8,18 @@ class Table extends React.Component {
     render() {
         return (
             <div>
-
+                <ProductCategories
             </div>
         )
     }
+}
+
+const ProductCategories = (categories) => {
+    return (
+        <li>
+
+        </li>;
+    )
 }
 
 export default Table;
