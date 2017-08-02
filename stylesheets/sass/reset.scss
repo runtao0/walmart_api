@@ -1,0 +1,49 @@
+$font-stack: Helvetica, sans-serif;
+$grey-font: #959595;
+$grey-table: #ebebeb;
+$grey-border: #d4d4d4;
+$blue-buttons: #1377d5;
+$borderRad: 5px;
+
+html, body, header, h1, a, ul, li,
+strong, button, select, label, option,
+i, main, section, img, div,
+h2, h3, p, input, article {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-family: Helvetica, sans-serif;
+    font-size: inherit;
+    box-sizing: inherit;
+    text-align: inherit;
+    text-decoration: inherit;
+    vertical-align: inherit;
+    color: inherit;
+    background: transparent;
+    font-weight: inherit;
+    z-index: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+body {
+    min-width: 900px;
+    font-weight: 500;
+    color: black;
+    font-family: $font-stack;
+    font-size: 16px;
+    font-weight: 300;
+    box-sizing: content-box;
+    z-index: 0;
+}
+
+a:hover {
+    text-decoration: underline;
+}

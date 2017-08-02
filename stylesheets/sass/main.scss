@@ -1,0 +1,85 @@
+@import 'reset';
+
+section {
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em;
+    border-bottom: 1px solid $grey-table;
+
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+}
+
+.input-fields {
+    margin-right: 2em;
+    width: auto;
+    // flex-grow: 1;
+}
+.input-fields > *:not(:last-child) {
+    margin-right: 1em;
+}
+.query-buttons > button:not(:last-child) {
+    margin-right: 1.5em;
+}
+
+.input-fields {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // max-width: 690px;
+    input {
+        font-style: italic;
+        padding: .5em .75em;
+        border-radius: $borderRad;
+        border: 1px solid $grey-border;
+    }
+    select {
+        width: auto;
+        height: 2em;
+        border-radius: $borderRad;
+        border: 1px solid $grey-border;
+        margin-left: 5px;
+    }
+    label {
+        white-space: nowrap;
+    }
+    > .flex-full {
+        width: 20%;
+    }
+    > .flex-half {
+        width: 8%;
+    }
+    select {
+        width: 66%;
+    }
+}
+
+.query-buttons {
+    width: 300px;
+}
+
+button.advanced-toggle {
+    text-decoration: underline;
+    color: $blue-buttons;
+}
+
+button.add-products {
+    padding: .5em .75em;
+    border-radius: $borderRad;
+    color: white;
+    background: $blue-buttons;
+}
+
+@media (max-width: 1500px) {
+    body {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        font-size: 8px;
+    }
+}
