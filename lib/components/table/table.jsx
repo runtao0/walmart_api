@@ -5,30 +5,18 @@ import TableRowContainer from './row/table_row_container';
 class Table extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            page: 0,
-            perPage: 10,
-            search: "",
-            searchCount: 0,
-            rows: [],
-        }
 
-        this.getRows = this.getRows.bind(this);
+        this.packageRows = this.packageRows.bind(this);
         this.pages = this.pages.bind(this);
         this.changePage = this.changePage.bind(this);
         this.displaySortHeader = this.displaySortHeader.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
-    } 
-
-    componentDidMount() {
-        this.getRows()
     }
 
     displaySortHeader() {
-        const { page, perPage, search, searchCount } = this.state;
-        const { count } = this.props;
+        const { page, perPage, searchTerm, searchCount, count } = this.props;
         let orderString;
-        if (search) {
+        if (searchTerm) {
             return (
                 <h3>
                     showing loaded products matching <strong>"{search}"</strong> <br/>
@@ -46,19 +34,16 @@ class Table extends React.Component {
 
     changePage(chosenPage) {
         return () => {
-            const { page } = this.state;
+            const { page } = this.props;
             if ((page + 1) === chosenPage) return;
-            this.setState({
-                page: (chosenPage - 1),
-            }, this.getRows )
+            this.props.changePage(chosenPage);
         }
     }
 
     pages() {
-        const { count } = this.props;
-        const { page, perPage, search, searchCount } = this.state;
+        const { count, page, perPage, searchCount, searchTerm } = this.props;
         const pages = [ <span key="0">pages: </span> ]
-        if (search) {
+        if (searchTerm) {
             for (let x = 1; x <= Math.ceil(searchCount / perPage); x++) {
                 if (x - 1 === page ) {
                     pages.push(<div key={x * Math.random()}>{x}</div>);
@@ -89,51 +74,61 @@ class Table extends React.Component {
         return [];
     }
 
-    getRows() {
-        const { items, order, productNames } = this.props;
-        const { page, perPage, search } = this.state;
-        const rows = [];
-        let modifyProductNames = productNames.slice();
-        if (search) {
-            modifyProductNames = modifyProductNames.filter((name) => {
-                return name.toLowerCase().includes(search.toLowerCase())
-            })
-        }
-        modifyProductNames.slice((page * perPage), (page * perPage) + perPage).forEach((name) => {
-            rows.push(<TableRowContainer
-                key={ items[name].itemId }
-                item={ items[name] }/>)
-        })
-        this.setState({
-            rows,
-            searchCount: modifyProductNames.length,
-        })
-    }
+    // getRows() {
+    //     const { items, order, productNames } = this.props;
+    //     const { page, perPage, search } = this.state;
+    //     const rows = [];
+    //     let modifyProductNames = productNames.slice();
+    //     if (search) {
+    //         modifyProductNames = modifyProductNames.filter((name) => {
+    //             return name.toLowerCase().includes(search.toLowerCase())
+    //         })
+    //     }
+    //     modifyProductNames.slice((page * perPage), (page * perPage) + perPage).forEach((name) => {
+    //         rows.push(<TableRowContainer
+    //             key={ items[name].itemId }
+    //             item={ items[name] }/>)
+    //     })
+    //     this.setState({
+    //         rows,
+    //         searchCount: modifyProductNames.length,
+    //     })
+    // }
 
     handleSearch(event) {
         // apply search and restart
-        this.setState({
-            search: event.target.value,
-            page: 0,
-        }, this.getRows )
+        this.props.changeSearch(event.target.value);
+    }
+
+    packageRows() {
+        const { currentRows } = this.props;
+        const rows = []
+        currentRows.forEach((item) => {
+            rows.push(
+                <TableRowContainer
+                    key={item.itemId}
+                    item={ item }/>
+            )
+        })
+        return rows;
     }
 
     render() {
-        const { search, rows } = this.state;
+        const { searchTerm } = this.props;
         return (
             <div>
                 <input type="text"
                     className="table-search-local"
                     placeholder="Search products"
                     onChange={ this.handleSearch }
-                    value={search}></input>
+                    value={searchTerm}></input>
                 { this.displaySortHeader() }
                 <table className="main-table">
                     <thead>
                         <TableHeaderContainer/>
                     </thead>
                     <tbody>
-                        { rows }
+                        { this.packageRows() }
                     </tbody>
                     <tfoot>
                         <tr className="table-foot">

@@ -43,13 +43,10 @@ class TableRow extends React.Component {
 
     handleSave() {
         const { brandNameVal } = this.state;
-        const { name } = this.props.item
+        const { name, renameBrandName } = this.props.item
 
-        if (brandNameVal !== "")this.props.renameBrandName(name, brandNameVal);
-        this.setState({
-            edit: false,
-            brandNameVal: '',
-        })
+        if (brandNameVal !== "") this.props.renameBrandName(name, brandNameVal);
+        this.handleToggleEdit();
         return;
     }
 
@@ -140,6 +137,7 @@ class TableRow extends React.Component {
     }
     render() {
         const { edit } = this.state;
+        const { itemId } = this.props.item;
         return(
             <tr>
                 { this.renderProduct() }
