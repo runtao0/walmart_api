@@ -30,7 +30,9 @@ class QueryBar extends React.Component {
     }
 
     handleAddProducts() {
-        this.props.fetchQuery(this.props);
+        const { fetchQuery, changeLoading } = this.props;
+        changeLoading(true);
+        fetchQuery(this.props);
     }
 
     queryFields() {

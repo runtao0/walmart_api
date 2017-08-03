@@ -1,5 +1,3 @@
-
-
 import React, { Proptypes } from 'react';
 
 class TableRow extends React.Component {
@@ -21,11 +19,19 @@ class TableRow extends React.Component {
         this.renderPrice = this.renderPrice.bind(this);
         this.renderMSRP = this.renderMSRP.bind(this);
         this.renderReviews = this.renderReviews.bind(this);
+        // this.editBrandConfirm = this.editBrandConfirm.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     handleDelete () {
         const { name } = this.props.item;
-        this.props.deleteProduct(name);
+        const message = `Are you sure you want to delete ${name}? This cannot be undone`;
+        this.props.setModal(message, this.deleteItem);
+    }
+
+    deleteItem() {
+        const { name } = this.props.item;
+        this.props.deleteProduct(name)
     }
 
     handleChangeInput(event) {
@@ -52,6 +58,7 @@ class TableRow extends React.Component {
 
     editLine() {
         const { brandNameVal } = this.state;
+        const { openConfirm } = this.props;
         return (
             <td className="table-brandname">
                 <div>
@@ -64,6 +71,13 @@ class TableRow extends React.Component {
                 </div>
             </td>
         )
+    }
+
+    editBrandConfirm() {
+        const { name, brandName } = this.props;
+        const { brandNameVal } = this.state;
+        const message = `Are you sure you want to change ${name} from ${brandName} to ${brandNameVal}?`
+        this.props.openConfirm()
     }
 
     renderProduct() {
@@ -103,9 +117,16 @@ class TableRow extends React.Component {
 
     renderPrice() {
         const { salePrice } = this.props.item;
+        if (!salePrice) {
+            return(
+                <td>
+                    <h4 className="no-msrp">(none)</h4>
+                </td>
+            )
+        }
         return(
             <td>
-                <h4>${ Math.round(100 * salePrice) / 100 }</h4>
+                <h4>${ (Math.round(100 * salePrice) / 100).toFixed(2) }</h4>
             </td>
         )
     }
@@ -114,7 +135,7 @@ class TableRow extends React.Component {
         const { msrp } = this.props.item;
         return(
             <td className={ msrp ? 'msrp' : 'no-msrp'}>
-                <h4>{ msrp ? `$${ Math.round(100 * msrp) / 100}` : '(none)'}</h4>
+                <h4>{ msrp ? `$${ (Math.round(100 * msrp) / 100).toFixed(2) }` : '(none)'}</h4>
             </td>
         )
     }

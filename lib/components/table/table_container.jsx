@@ -6,7 +6,7 @@ import {
     changeSearch
  } from '../../redux/actions/products_actions';
 
-const mapStateToProps = ({ products }) => ({
+const mapStateToProps = ({ products }, ownProps) => ({
     items: products.items,
     count: products.count,
     productNames: products.productNames,
@@ -15,7 +15,9 @@ const mapStateToProps = ({ products }) => ({
     perPage: products.perPage,
     searchTerm: products.searchTerm,
     currentRows: products.currentRows,
+    setModal: ownProps.setModal,
 })
+// modal?
 
 const mapDispatchToProps = (dispatch) => ({
     changeSearchCount: (count) => dispatch(changeSearchCount(count)),

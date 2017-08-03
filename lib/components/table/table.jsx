@@ -74,39 +74,21 @@ class Table extends React.Component {
         return [];
     }
 
-    // getRows() {
-    //     const { items, order, productNames } = this.props;
-    //     const { page, perPage, search } = this.state;
-    //     const rows = [];
-    //     let modifyProductNames = productNames.slice();
-    //     if (search) {
-    //         modifyProductNames = modifyProductNames.filter((name) => {
-    //             return name.toLowerCase().includes(search.toLowerCase())
-    //         })
-    //     }
-    //     modifyProductNames.slice((page * perPage), (page * perPage) + perPage).forEach((name) => {
-    //         rows.push(<TableRowContainer
-    //             key={ items[name].itemId }
-    //             item={ items[name] }/>)
-    //     })
-    //     this.setState({
-    //         rows,
-    //         searchCount: modifyProductNames.length,
-    //     })
-    // }
+
 
     handleSearch(event) {
         this.props.changeSearch(event.target.value);
     }
 
     packageRows() {
-        const { currentRows } = this.props;
+        const { currentRows, setModal } = this.props;
         const rows = []
         currentRows.forEach((item, ind, array) => {
             rows.push(
                 <TableRowContainer
                     key={item.itemId}
-                    item={ item }/>
+                    item={ item }
+                    setModal={ setModal }/>
             )
         })
         return rows;
