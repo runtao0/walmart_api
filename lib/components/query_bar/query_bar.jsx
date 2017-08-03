@@ -36,12 +36,10 @@ class QueryBar extends React.Component {
             startAt,
             changeLoading,
             setModal } = this.props;
-            debugger
         if (!queryString ) {
-            setModal("You did not previde a query", () => {});
+            setModal("You did not provide a query", () => {});
             return;
         } else if (numResults && !parseInt(numResults)) {
-            debugger
             setModal("Number of results is not a number", () => {});
             return;
         } else if (startAt && !parseInt(startAt)) {
