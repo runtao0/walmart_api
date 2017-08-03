@@ -1,0 +1,192 @@
+html, body, header, h1, a, ul, li,
+strong, button, select, label, option,
+table, tbody, th, tr,
+i, main, section, img, div,
+h2, h3, h4, p, input, article {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-family: Helvetica, sans-serif;
+  font-size: inherit;
+  box-sizing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  color: inherit;
+  background: transparent;
+  font-weight: inherit;
+  z-index: inherit; }
+
+ul {
+  list-style: none; }
+
+button:hover {
+  cursor: pointer; }
+
+body {
+  min-width: 900px;
+  font-weight: 500;
+  color: #959595;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  box-sizing: content-box;
+  z-index: 0; }
+
+input {
+  font-style: italic;
+  padding: .5em .75em;
+  border-radius: 5px;
+  border: 1px solid #d4d4d4; }
+
+strong {
+  font-weight: 400;
+  color: black; }
+
+a:hover {
+  text-decoration: underline; }
+
+section {
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2em;
+  display: flex; }
+
+section.messages {
+  flex-flow: column; }
+
+section.query-bar {
+  border-bottom: 1px solid #ebebeb; }
+
+section.query-display {
+  flex-direction: column;
+  justify-content: flex-start; }
+
+section.table-container {
+  justify-content: space-between; }
+
+.input-fields {
+  margin-right: 2em;
+  width: auto; }
+
+.input-fields > *:not(:last-child) {
+  margin-right: 1em; }
+
+.query-buttons > button:not(:last-child) {
+  margin-right: 1.5em; }
+
+.input-fields {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+  .input-fields select {
+    width: auto;
+    height: 2em;
+    border-radius: 5px;
+    border: 1px solid #d4d4d4;
+    margin-left: 5px; }
+  .input-fields label {
+    white-space: nowrap; }
+  .input-fields > .flex-full {
+    width: 20%; }
+  .input-fields > .flex-half {
+    width: 8%; }
+  .input-fields select {
+    width: 66%; }
+
+.query-buttons {
+  width: 300px; }
+
+button.advanced-toggle {
+  text-decoration: underline;
+  color: #1377d5; }
+
+button.add-products, button.edit-toggle {
+  padding: .5em .75em;
+  border-radius: 5px;
+  color: white;
+  background: #1377d5; }
+
+@media (max-width: 1500px) {
+  body {
+    font-size: 12px; } }
+@media (max-width: 1200px) {
+  body {
+    font-size: 8px; } }
+h2 {
+  padding-bottom: 1em;
+  font-size: 1.5em; }
+
+h3 {
+  padding: 1em; }
+
+table.main-table {
+  width: 100%;
+  background-color: #ebebeb;
+  border-collapse: collapse;
+  color: black; }
+  table.main-table input {
+    font-style: normal;
+    margin-right: .5em; }
+  table.main-table .no-msrp {
+    font-style: italic;
+    color: #959595; }
+  table.main-table > thead {
+    font-weight: 400;
+    color: black; }
+  table.main-table > tbody {
+    background-color: white; }
+    table.main-table > tbody tr {
+      border-bottom: 3px solid #ebebeb; }
+      table.main-table > tbody tr h4 {
+        max-width: 300px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden; }
+  table.main-table .table-brandname > div {
+    display: flex;
+    flex-wrap: nowrap; }
+  table.main-table .table-product, table.main-table .table-review-delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    table.main-table .table-product > div, table.main-table .table-review-delete > div {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      align-items: center; }
+      table.main-table .table-product > div > .thumbnail, table.main-table .table-review-delete > div > .thumbnail {
+        height: 4em;
+        width: auto;
+        margin-right: 2em; }
+  table.main-table th, table.main-table td {
+    padding: 1em 1.5em;
+    border: none;
+    vertical-align: middle; }
+  table.main-table td.table-brandname:hover {
+    cursor: pointer; }
+    table.main-table td.table-brandname:hover h4 {
+      text-decoration: underline; }
+  table.main-table a {
+    border: 1px solid #d4d4d4;
+    border-radius: 5px; }
+    table.main-table a img {
+      height: 1.5em;
+      padding: 3px; }
+  table.main-table .table-delete {
+    height: 1.5em; }
+  table.main-table .table-delete:hover {
+    cursor: pointer; }
+  table.main-table .table-foot > td {
+    display: flex; }
+    table.main-table .table-foot > td > span, table.main-table .table-foot > td > div {
+      margin-right: 1em; }
+    table.main-table .table-foot > td > div.not-current-page {
+      color: #1377d5;
+      text-decoration: underline; }
+    table.main-table .table-foot > td > div:hover {
+      cursor: pointer; }
+
+/*# sourceMappingURL=master.css.map */

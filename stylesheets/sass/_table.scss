@@ -1,0 +1,99 @@
+
+h2 {
+    padding-bottom: 1em;
+    font-size: 1.5em;
+}
+
+h3 {
+    padding: 1em;
+}
+
+table.main-table {
+    width: 100%;
+    background-color: $grey-table;
+    border-collapse: collapse;
+    color: black;
+    input {
+         font-style: normal;
+         margin-right: .5em;
+    }
+    .no-msrp {
+        font-style: italic;
+        color: $grey-font;
+    }
+    > thead {
+        font-weight: 400;
+        color: black;
+    }
+    > tbody {
+        background-color: white;
+        tr {
+            border-bottom: 3px solid $grey-table;
+            h4 {
+                max-width: 300px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+    }
+    .table-brandname > div {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .table-product, .table-review-delete {
+        > div {
+            > .thumbnail {
+                height: 4em;
+                width: auto;
+                margin-right: 2em;
+            }
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    th, td {
+        padding: 1em 1.5em;
+        border: none;
+        vertical-align: middle;
+    }
+    td.table-brandname:hover {
+        cursor: pointer;
+        h4 {
+            text-decoration: underline;
+        }
+    }
+    a {
+        border: 1px solid $grey-border;
+        border-radius: $borderRad;
+        img {
+            height: 1.5em;
+            padding: 3px;
+        }
+    }
+    .table-delete {
+        height: 1.5em;
+    }
+    .table-delete:hover {
+        cursor: pointer
+    }
+    .table-foot > td {
+        display: flex;
+        > span, > div {
+            margin-right: 1em;
+        }
+        > div.not-current-page {
+            color: $blue-buttons;
+            text-decoration: underline;
+        }
+        > div:hover {
+            cursor: pointer;
+        }
+    }
+}
