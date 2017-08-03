@@ -103,11 +103,47 @@ button.advanced-toggle {
   text-decoration: underline;
   color: #1377d5; }
 
-button.add-products, button.edit-toggle {
+button.add-products, button.edit-toggle, #confirm-modal button {
   padding: .5em .75em;
   border-radius: 5px;
   color: white;
   background: #1377d5; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+#loader {
+  border-radius: 50%;
+  width: 10vh;
+  height: 10vh;
+  border: 0.5rem solid #1377d5;
+  border-top-color: white;
+  animation: spin 1s infinite linear;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  z-index: 2; }
+
+#confirm-modal {
+  position: fixed;
+  z-index: 2;
+  left: 12%;
+  top: 20%;
+  background: #d4d4d4;
+  width: auto;
+  display: flex;
+  flex-flow: column;
+  color: black;
+  border-radius: 5px;
+  font-size: 2em; }
+  #confirm-modal > div.confirm-message {
+    padding: 1em 0 2em 0; }
+  #confirm-modal > div.confirm-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em; }
 
 @media (max-width: 1500px) {
   body {

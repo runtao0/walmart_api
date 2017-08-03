@@ -69,11 +69,55 @@ button.advanced-toggle {
     color: $blue-buttons;
 }
 
-button.add-products, button.edit-toggle {
+button.add-products, button.edit-toggle, #confirm-modal button {
     padding: .5em .75em;
     border-radius: $borderRad;
     color: white;
     background: $blue-buttons;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#loader {
+    border-radius: 50%;
+    width: 10vh;
+    height: 10vh;
+    border: .5rem solid $blue-buttons;
+    border-top-color: white;
+    animation: spin 1s infinite linear;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: 2;
+}
+
+#confirm-modal {
+    position: fixed;
+    z-index: 2;
+    left: 12%;
+    top: 20%;
+    background: $grey-border;
+    width: auto;
+    display: flex;
+    flex-flow: column;
+    color: black;
+    border-radius: $borderRad;
+    font-size: 2em;
+    > div.confirm-message {
+        padding: 1em 0 2em 0;
+    }
+    >div.confirm-buttons {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 1em;
+    }
 }
 
 @media (max-width: 1500px) {
