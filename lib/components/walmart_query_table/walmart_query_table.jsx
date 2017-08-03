@@ -42,7 +42,8 @@ class WalmartQueryTable extends React.Component {
 
         return (
             <div>
-                <QueryBarContainer/>
+                <QueryBarContainer
+                    setModal={ this.setModal }/>
                 { (error || !areThereItems) &&
                     <section className="messages">
                         { error &&
