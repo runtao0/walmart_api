@@ -14,6 +14,13 @@ class TableHeader extends React.Component {
         super(props);
 
         this.generateCategories = this.generateCategories.bind(this);
+        this.handleChangeOrder = this.handleChangeOrder.bind(this);
+    }
+
+    handleChangeOrder() {
+        const { changeProductOrder, order } = this.props;
+        if (order === "asc") changeProductOrder("desc");
+        if (order === "desc") changeProductOrder("asc");
     }
 
     generateCategories() {
@@ -21,19 +28,29 @@ class TableHeader extends React.Component {
         const fields = [];
         let orderArrow;
         if (order === "asc") {
-            orderArrow = <i class="mdi mdi-menu-up"></i>;
+            orderArrow = <img src="assets/menu-up.png"
+                className="table-sort-arrow"
+                onClick={ this.handleChangeOrder }></img>;
         } else if (order === "desc") {
-            orderArrow = <i class="mdi mdi-menu-down"></i>;
+            orderArrow = <img src="assets/menu-down.png"
+                className="table-sort-arrow"
+                onClick={ this.handleChangeOrder }></img>;
         }
         Object.keys(categories).forEach((key) => {
-            fields.push(
-                <th key={key}>
-                    { categories[key] }
-                    { sortBy === categories[key] &&
-                        orderArrow
-                    }
-                </th>
-            )
+            if (categories[key] === "Product") {
+                fields.push(
+                    <HeaderCell key={key}
+                        category={categories[key]}
+                        arrow={ orderArrow }/>
+                )
+
+            } else {
+                fields.push(
+                    <HeaderCell key={key}
+                        category={categories[key]}/>
+                )
+
+            }
         })
 
         return fields;
@@ -46,7 +63,16 @@ class TableHeader extends React.Component {
             </tr>
         )
     }
-
 }
 
+const HeaderCell = ({ category, arrow }) => {
+    return (
+        <th>
+            <div className={arrow ? "sort-category" : ""}>
+                { category }
+                { arrow && arrow }
+            </div>
+        </th>
+    )
+}
 export default TableHeader;
