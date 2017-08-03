@@ -100,11 +100,12 @@ button.add-products, button.edit-toggle, #confirm-modal button {
 
 #confirm-modal {
     position: absolute;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     z-index: 2;
     top: 0;
     background-color: rgba(88, 88, 88, 0.56);
+    max-width: none;
     >div {
         position: relative;
         top: 20%;
@@ -112,7 +113,7 @@ button.add-products, button.edit-toggle, #confirm-modal button {
         margin-right: auto;
         background: $grey-border;
         width: 60%;
-        height: 7em;
+        height: 8em;
         display: flex;
         flex-flow: column;
         color: black;
@@ -127,7 +128,6 @@ button.add-products, button.edit-toggle, #confirm-modal button {
     div.confirm-buttons {
         display: flex;
         justify-content: space-between;
-        padding-bottom: .5em;
     }
 }
 
