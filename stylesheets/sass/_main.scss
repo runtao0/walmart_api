@@ -76,6 +76,28 @@ button.add-products, button.edit-toggle {
     background: $blue-buttons;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#loader {
+    border-radius: 50%;
+    width: 10vh;
+    height: 10vh;
+    border: .5rem solid $blue-buttons;
+    border-top-color: white;
+    animation: spin 1s infinite linear;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: 2;
+}
+
 @media (max-width: 1500px) {
     body {
         font-size: 12px;

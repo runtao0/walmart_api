@@ -1,5 +1,3 @@
-
-
 import React, { Proptypes } from 'react';
 
 class TableRow extends React.Component {
@@ -21,11 +19,24 @@ class TableRow extends React.Component {
         this.renderPrice = this.renderPrice.bind(this);
         this.renderMSRP = this.renderMSRP.bind(this);
         this.renderReviews = this.renderReviews.bind(this);
+        // this.editBrandConfirm = this.editBrandConfirm.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
+
+    shouldComponentUpdate (nextProps) {
+        debugger
+    }
+
 
     handleDelete () {
         const { name } = this.props.item;
-        this.props.deleteProduct(name);
+        const message = `Are you sure you want to delete ${name}? This cannot be undone`;
+        this.props.setModal(message, this.deleteItem);
+    }
+
+    deleteItem() {
+        const { name } = this.props.item;
+        this.props.deleteProduct(name)
     }
 
     handleChangeInput(event) {
@@ -55,6 +66,7 @@ class TableRow extends React.Component {
 
     editLine() {
         const { brandNameVal } = this.state;
+        const { openConfirm } = this.props;
         return (
             <td className="table-brandname">
                 <div>
@@ -67,6 +79,13 @@ class TableRow extends React.Component {
                 </div>
             </td>
         )
+    }
+
+    editBrandConfirm() {
+        const { name, brandName } = this.props;
+        const { brandNameVal } = this.state;
+        const message = `Are you sure you want to change ${name} from ${brandName} to ${brandNameVal}?`
+        this.props.openConfirm()
     }
 
     renderProduct() {

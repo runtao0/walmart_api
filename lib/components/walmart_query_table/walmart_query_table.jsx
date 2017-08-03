@@ -1,6 +1,7 @@
 import React, { Proptypes } from 'react';
 import QueryBarContainer from '../query_bar/query_bar_container';
 import TableContainer from '../table/table_container';
+import ConfirmModal from '../modals/confirm_modal';
 
 class WalmartQueryTable extends React.Component {
     constructor(props) {
@@ -10,15 +11,23 @@ class WalmartQueryTable extends React.Component {
         }
 
         this.setModal = this.setModal.bind(this);
-    }
+        this.confirmModal = this.confirmModal.bind(this)
+;    }
 
 
-    setModal() {
+    setModal(message, successFunc) {
         const { modal } = this.state;
-        this.setState({ modal: !modal })
+        this.setState({
+            modal: !modal,
+            successFunc,
+            message,
+         })
     }
 
-
+    confirmModal() {
+        this.state.successFunc();
+        this.setModal();
+    }
 
     noProducts () {
         return (
@@ -27,7 +36,8 @@ class WalmartQueryTable extends React.Component {
     }
 
     render() {
-        const { error, items } = this.props;
+        const { error, items, loading } = this.props;
+        const { modal, message } = this.state;
         const areThereItems = Object.keys(items).length > 0;
 
         return (
@@ -41,13 +51,19 @@ class WalmartQueryTable extends React.Component {
                         { !areThereItems &&
                             this.noProducts()
                         }
-                    </section>
-                }
+                    </section> }
                 { areThereItems &&
                     <section className="table-container">
-                        <TableContainer/>
-                    </section>
-                }
+                        <TableContainer setModal={ this.setModal }/>
+                    </section> }
+                { loading &&
+                    <div id="loader"></div> }
+                { modal &&
+                    <ConfirmModal
+                        message={ message }
+                        confirmModal={ this.confirmModal }
+                        setModal={ this.setModal }/>
+                    }
             </div>
         )
     }

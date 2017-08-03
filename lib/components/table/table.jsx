@@ -18,7 +18,8 @@ class Table extends React.Component {
         this.changePage = this.changePage.bind(this);
         this.displaySortHeader = this.displaySortHeader.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
-    } 
+    }
+
 
     componentDidMount() {
         this.getRows()
@@ -90,7 +91,8 @@ class Table extends React.Component {
     }
 
     getRows() {
-        const { items, order, productNames } = this.props;
+        debugger
+        const { items, order, productNames, setModal } = this.props;
         const { page, perPage, search } = this.state;
         const rows = [];
         let modifyProductNames = productNames.slice();
@@ -102,6 +104,7 @@ class Table extends React.Component {
         modifyProductNames.slice((page * perPage), (page * perPage) + perPage).forEach((name) => {
             rows.push(<TableRowContainer
                 key={ items[name].itemId }
+                setModal={ setModal }
                 item={ items[name] }/>)
         })
         this.setState({
