@@ -7,7 +7,17 @@ h2 {
 h3 {
     padding: 1em;
 }
-
+.table-container {
+    > div {
+        width: 100%;
+        > * {
+            width: 100%;
+        }
+    }
+    .table-search-local {
+        width: 12%;
+    }
+}
 table.main-table {
     width: 100%;
     background-color: $grey-table;
@@ -24,12 +34,19 @@ table.main-table {
     > thead {
         font-weight: 400;
         color: black;
+        width: 100%;
+        .sort-category {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
     > tbody {
+        width: 100%;
         background-color: white;
         tr {
             border-bottom: 3px solid $grey-table;
-            h4 {
+            .table-product h4 {
                 max-width: 300px;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -95,5 +112,8 @@ table.main-table {
         > div:hover {
             cursor: pointer;
         }
+    }
+    .table-sort-arrow:hover {
+        cursor: pointer;
     }
 }

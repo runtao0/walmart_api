@@ -48,7 +48,7 @@ a:hover {
   text-decoration: underline; }
 
 section {
-  max-width: 1500px;
+  max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
   padding: 2em;
@@ -122,6 +122,13 @@ h2 {
 h3 {
   padding: 1em; }
 
+.table-container > div {
+  width: 100%; }
+  .table-container > div > * {
+    width: 100%; }
+.table-container .table-search-local {
+  width: 12%; }
+
 table.main-table {
   width: 100%;
   background-color: #ebebeb;
@@ -135,12 +142,18 @@ table.main-table {
     color: #959595; }
   table.main-table > thead {
     font-weight: 400;
-    color: black; }
+    color: black;
+    width: 100%; }
+    table.main-table > thead .sort-category {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
   table.main-table > tbody {
+    width: 100%;
     background-color: white; }
     table.main-table > tbody tr {
       border-bottom: 3px solid #ebebeb; }
-      table.main-table > tbody tr h4 {
+      table.main-table > tbody tr .table-product h4 {
         max-width: 300px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -188,5 +201,7 @@ table.main-table {
       text-decoration: underline; }
     table.main-table .table-foot > td > div:hover {
       cursor: pointer; }
+  table.main-table .table-sort-arrow:hover {
+    cursor: pointer; }
 
 /*# sourceMappingURL=master.css.map */
