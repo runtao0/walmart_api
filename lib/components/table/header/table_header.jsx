@@ -16,12 +16,6 @@ class TableHeader extends React.Component {
         this.generateCategories = this.generateCategories.bind(this);
     }
 
-    componentDidMount() {
-        // bring order to products state
-        const { order, changeProductOrder } = this.props;
-        changeProductOrder(order);
-    }
-
     generateCategories() {
         const { sortBy, order } = this.props
         const fields = [];
@@ -41,29 +35,18 @@ class TableHeader extends React.Component {
                 </th>
             )
         })
+
+        return fields;
     }
 
     render() {
-        <tr>
+        return (
+            <tr>
             { this.generateCategories() }
-        </tr>
-
+            </tr>
+        )
     }
 
 }
 
 export default TableHeader;
-const ProductCategories = (
-    { sortby, order },
-    fields = categories,
-     ...extra
- ) => {
-    let sortIcon;
-    const
-    if (extra)
-    return (
-        <tr>
-
-        </tr>
-    )
-}

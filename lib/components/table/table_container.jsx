@@ -2,22 +2,14 @@ import { connect } from 'react-redux';
 import Table from './table';
 import { changeQuery,
     fetchQuery
-} from '../../redux/actions/actions';
+} from '../../redux/actions/query_actions';
 
-const mapStateToProps = ({ query }) => ({
-    queryString: query.displayQuery.queryString,
-    brandName: query.displayQuery.brandName,
-    numResults: query.displayQuery.numResults,
-    startAt: query.displayQuery.startAt,
-    sortBy: query.displayQuery.sortBy,
+const mapStateToProps = ({ products }) => ({
+    items: products.items,
+    count: products.count
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    // changeQuery: (queryString) => dispatch(changeQuery(queryString)),
-    // fetchQuery: (queryString) => dispatch(fetchQuery(queryString))
-})
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(Table);
