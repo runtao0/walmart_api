@@ -19,7 +19,7 @@ class Table extends React.Component {
         if (searchTerm) {
             return (
                 <h3>
-                    showing loaded products matching <strong>"{search}"</strong> <br/>
+                    showing loaded products matching <strong>"{searchTerm}"</strong> <br/>
                  <strong>{ page * perPage + 1 } - { (page * perPage + perPage) > searchCount ? searchCount : page * perPage + perPage}</strong> of <strong>{ searchCount }</strong>
                 </h3>
             )
@@ -96,14 +96,13 @@ class Table extends React.Component {
     // }
 
     handleSearch(event) {
-        // apply search and restart
         this.props.changeSearch(event.target.value);
     }
 
     packageRows() {
         const { currentRows } = this.props;
         const rows = []
-        currentRows.forEach((item) => {
+        currentRows.forEach((item, ind, array) => {
             rows.push(
                 <TableRowContainer
                     key={item.itemId}
