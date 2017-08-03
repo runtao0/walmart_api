@@ -33,14 +33,16 @@ class WalmartQueryTable extends React.Component {
         return (
             <div>
                 <QueryBarContainer/>
-                <section className="messages">
-                    { error &&
-                        <h2>{ error }</h2>
-                    }
-                    { !areThereItems &&
-                        this.noProducts()
-                    }
-                </section>
+                { (error || !areThereItems) &&
+                    <section className="messages">
+                        { error &&
+                            <h2>{ error }</h2>
+                        }
+                        { !areThereItems &&
+                            this.noProducts()
+                        }
+                    </section>
+                }
                 { areThereItems &&
                     <section className="table-container">
                         <TableContainer/>
