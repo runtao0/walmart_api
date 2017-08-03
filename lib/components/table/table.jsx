@@ -18,7 +18,7 @@ class Table extends React.Component {
         this.changePage = this.changePage.bind(this);
         this.displaySortHeader = this.displaySortHeader.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
-    }
+    } 
 
     componentDidMount() {
         this.getRows()
