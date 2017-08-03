@@ -1,11 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import TableContainer from './containers/table_container';
+import WalmartQueryTableContainer from './walmart_query_table/walmart_query_table_container';
 
 const Root = ({ store }) => {
     return (
         <Provider store={ store }>
-            <TableContainer/>
+            <WalmartQueryTableContainer/>
         </Provider>
     )
 }
