@@ -99,24 +99,35 @@ button.add-products, button.edit-toggle, #confirm-modal button {
 }
 
 #confirm-modal {
-    position: fixed;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
     z-index: 2;
-    left: 12%;
-    top: 20%;
-    background: $grey-border;
-    width: auto;
-    display: flex;
-    flex-flow: column;
-    color: black;
-    border-radius: $borderRad;
-    font-size: 2em;
-    > div.confirm-message {
-        padding: 1em 0 2em 0;
+    top: 0;
+    background-color: rgba(88, 88, 88, 0.56);
+    >div {
+        position: relative;
+        top: 20%;
+        margin-left: auto;
+        margin-right: auto;
+        background: $grey-border;
+        width: 60%;
+        height: 7em;
+        display: flex;
+        flex-flow: column;
+        color: black;
+        border-radius: $borderRad;
+        font-size: 1.5em;
+        padding: 1em;
     }
-    >div.confirm-buttons {
+    div.confirm-message {
+        text-align: center;
+        padding: 1em 0 1.5em 0;
+    }
+    div.confirm-buttons {
         display: flex;
         justify-content: space-between;
-        padding-bottom: 1em;
+        padding-bottom: .5em;
     }
 }
 
